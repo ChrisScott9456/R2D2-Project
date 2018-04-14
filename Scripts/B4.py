@@ -43,7 +43,7 @@ def blink():
     GPIO.output(BLUE, GPIO.LOW)
     
 
-print "Starting behavior 3"
+print "Starting behavior 4"
 
 forwards()
 sleep(0.5)
@@ -58,7 +58,7 @@ sleep(0.05)
 backwards()
 sleep(0.5)
 
-print "Ending behavior 3"
+print "Ending behavior 4"
 GPIO.output(Motor1E, GPIO.LOW)
 
 GPIO.cleanup()
