@@ -14,10 +14,11 @@ GPIO.setup(Motor1F, GPIO.OUT)
 GPIO.setup(Motor1B, GPIO.OUT)
 GPIO.setup(Motor1E, GPIO.OUT)
 GPIO.setup(RED, GPIO.OUT)
+GPIO.setup(BLUE, GPIO.OUT)
 
 def play():
     pygame.mixer.init()
-    pygame.mixer.music.load("../R2D2/2.mp3")
+    pygame.mixer.music.load("../R2D2/3.mp3")
     pygame.mixer.music.play()
     while pygame.mixer.music.get_busy() == True:
         continue
@@ -32,21 +33,30 @@ def backwards():
     GPIO.output(Motor1B, GPIO.LOW)
     GPIO.output(Motor1E, GPIO.HIGH)
 
-print "Starting behavior 2"
+def blink():
+    GPIO.output(RED, GPIO.HIGH)
+    sleep(0.1)
+    GPIO.output(RED, GPIO.LOW)
+    GPIO.output(BLUE, GPIO.HIGH)
+    sleep(0.1)
+    GPIO.output(RED, GPIO.HIGH)
+    GPIO.output(BLUE, GPIO.LOW)
 
-backwards()
-sleep(0.5)
-forwards()
-sleep(0.5)
-backwards()
-sleep(0.5)
-forwards()
+
+print "Starting behavior 3"
+
+blink()
+sleep(0.1)
 play()
+blink()
+sleep(0.1)
+GPIO.output(RED, GPIO.LOW)
+GPIO.output(BLUE, GPIO.HIGH)
+sleep(0.1)
+GPIO.output(BLUE, GPIO.LOW)
 GPIO.output(RED, GPIO.HIGH)
-backwards()
-sleep(0.8)
+sleep(0.5)
 
-print "Ending behavior 2"
-GPIO.output(Motor1E,GPIO.LOW)
+print "Ending behavior 3"
 
 GPIO.cleanup()
