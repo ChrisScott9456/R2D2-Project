@@ -13,7 +13,7 @@ RED = 22
 GPIO.setup(Motor1F, GPIO.OUT)
 GPIO.setup(Motor1B, GPIO.OUT)
 GPIO.setup(Motor1E, GPIO.OUT)
-GPIO.setup(BLUE, GPIO.OUT)
+GPIO.setup(RED, GPIO.OUT)
 
 def play():
     pygame.mixer.init()
@@ -34,15 +34,17 @@ def backwards():
 
 print "Starting behavior 1"
 
+backwards()
+sleep(0.5)
+forwards()
+sleep(0.5)
+backwards()
+sleep(0.5)
 forwards()
 play()
-GPIO.output(BLUE, GPIO.HIGH)
-
-sleep(0.2)
-
+GPIO.output(RED, GPIO.HIGH)
 backwards()
-
-sleep(2)
+sleep(0.8)
 
 print "Ending behavior 1"
 GPIO.output(Motor1E,GPIO.LOW)
